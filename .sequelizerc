@@ -6,4 +6,4 @@ module.exports = {
 };
 
 //npx sequelize db:create para crar o database
-//npx sequelize migrations:create --name=nomeDaTabela
+//npx sequelize migration:create --name=nomeDaTabela
