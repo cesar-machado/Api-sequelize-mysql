@@ -6,9 +6,9 @@ class User extends Model {
             name: DataTypes.STRING,
             password: DataTypes.STRING,
         },
-        {
-            sequelize,
-        }
+            {
+                sequelize,
+            }
         )
     }
 }

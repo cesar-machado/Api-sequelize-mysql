@@ -3,22 +3,26 @@ const bcrypt = require('bcryptjs')
 
 
 module.exports = {
-    async index(req,res) {
+    async index(req, res) {
         const users = await User.findAll();
 
         return res.json(users);
     },
-    
-    async store(req, res) {
-        const{name, password} = req.body;
 
-        //hash
-         const salt = await bcrypt.genSalt(10);
-         const hashPassword = await bcrypt.hash(req.body.password, salt);
+    async store(req, res, next ) {
+        try {
+            const { name, password } = req.body;
 
-        //Create User
-         const user = await User.create({ name, password: hashPassword});
-        return res.json(user)
+            //hash
+            const salt = await bcrypt.genSalt(10);
+            const hashPassword = await bcrypt.hash(req.body.password, salt);
+
+            //Create User
+            const user = await User.create({ name, password: hashPassword });
+            return res.json(user)
+        } catch (error) {
+            next(error)
+        }
     },
 
     async delete(req, res) {
@@ -30,7 +34,7 @@ module.exports = {
 
         return res.json(user)
     }
-    
-    
+
+
 
 }
