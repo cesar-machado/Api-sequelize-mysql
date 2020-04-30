@@ -1,6 +1,7 @@
 const express = require('express')
 const UserController = require('./controllers/UserController')
 const AlunosControlllers = require('./controllers/AlunosControllers')
+const CursosController = require('./controllers/CursosController')
 
 const routes =  express.Router();
 
@@ -11,7 +12,13 @@ routes.delete('/users/:id', UserController.delete)
 
 //Alunos
 routes.get('/alunos', AlunosControlllers.index)
+routes.get('/alunos/:id', AlunosControlllers.index)
 routes.post('/alunoscr', AlunosControlllers.store)
+routes.put('/alunos/editar/:id', AlunosControlllers.update)
+
+//Cursos
+routes.get('/cursos', CursosController.index)
+routes.post('/crcursos', CursosController.store)
 
 
 

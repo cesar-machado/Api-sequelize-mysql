@@ -7,7 +7,11 @@ module.exports = {
 
         return res.json(alunos);
     },
+    async index(req, res) {
+        const alunos = await Alunos.findByPk(req.params.id)
 
+        return res.json(alunos);
+    },
     async store(req, res, next) {
         try {
             const { name, email, celular, genero, rg, cpf, endereco, numero, complemento, bairro, cep, escolaridade,
@@ -36,4 +40,23 @@ module.exports = {
             next(error)
         }
     },
+    async update(req, res, next) {
+        try {
+            const { name, email, celular, genero, rg, cpf, endereco, numero, complemento, bairro, cep, escolaridade,
+                curso, obs } = req.body;
+            const alunos = await Alunos.update({name, email, celular, genero, rg, cpf, endereco, numero, complemento, bairro, cep, escolaridade,
+                curso, obs }, {
+                where: {
+                    id: req.params.id
+                }
+            })
+
+            return res.json("Edição Completa")
+        } catch (error) {
+            next(error)
+        }
+    }
+
+
+
 }
