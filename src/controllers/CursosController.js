@@ -22,7 +22,7 @@ module.exports = {
         }
     },
     async inscricoes(req, res) {
-        const { AlunosId}  = req.params;
+        const { CursosId }  = req.params;
         
         const curso = await Cursos.findAll({
             include: { 

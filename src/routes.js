@@ -18,7 +18,7 @@ routes.post('/alunoscr', AlunosControlllers.store)
 routes.put('/alunos/editar/:id', AlunosControlllers.update)
 
 //Cursos
-routes.get('/cursos', CursosController.inscricoes)
+routes.get('/cursos', CursosController.index)
 routes.post('/crcursos', CursosController.store)
 
 //inscrições
