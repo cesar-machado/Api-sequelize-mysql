@@ -19,9 +19,14 @@ class Alunos extends Model {
 
         },
             {
-                sequelize,
+                sequelize
+                
             }
         )
+    }
+
+    static associate(models) {
+        this.belongsToMany(models.Cursos, { foreignKey: 'AlunosId',through: 'Inscricoes', as : 'cursos'})
     }
 }
 

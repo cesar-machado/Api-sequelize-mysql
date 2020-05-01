@@ -7,8 +7,13 @@ class Cursos extends Model {
         },
             {
                 sequelize,
+                tableName: 'Cursos'
             }
         )
+    }
+
+    static associate(models) {
+        this.belongsToMany(models.Alunos, { foreignKey: 'CursosId',through: 'Inscricoes', as : 'alunos'})
     }
 }
 
